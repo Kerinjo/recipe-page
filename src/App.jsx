@@ -14,16 +14,26 @@ const App = () => {
       }) 
   }, [])
 
+// www.themealdb.com/api/json/v1/1/filter.php?c=Seafood
+
+  const getCategory = (categoryName) => {
+    axios
+      .get(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${categoryName}`)
+      .then(response => {
+        console.log(response.data)
+      })
+  }
+
   return (
     <div className="App">
       <h1>categories</h1>
-      <ul>
-        {categories.map(category =>
-          <li key={category.idCategory}>
+      {categories.map(category =>
+        <div key={category.idCategory}>
+          <a onClick={() => getCategory(category.strCategory)}>
             {category.strCategory}
-          </li>  
-        )}
-      </ul>
+          </a>
+        </div>
+      )}
     </div>
   )
 }
