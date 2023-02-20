@@ -4,10 +4,10 @@ import App from './App'
 import './index.css'
 import axios from 'axios'
 
-axios.get('http://www.themealdb.com/api/json/v1/1/random.php')
+axios.get('https://www.themealdb.com/api/json/v1/1/categories.php')
   .then(response => {
-    const meals = response.data
-    console.log(meals)
+    const categories = response.data
+    console.log(categories)
 })
 
 ReactDOM.createRoot(document.getElementById('root')).render(
