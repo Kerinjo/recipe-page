@@ -1,17 +1,27 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
+import Category from './components/Category'
 import './index.css'
 import axios from 'axios'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
-axios.get('https://www.themealdb.com/api/json/v1/1/categories.php')
-  .then(response => {
-    const categories = response.data
-    console.log(categories)
-})
+ 
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />
+  },
+  {
+    path: "/category",
+    element: <Category />
+  }
+])
+
+// TODO: Implement error pages
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>,
 )
