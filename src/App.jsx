@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import './App.css'
 
 
@@ -24,16 +25,28 @@ const App = () => {
       })
   }
 
+  const getCategoryInfo = (category) => {
+    console.log(category.strCategory)
+    console.log(category)
+  }
+
   return (
     <div className="App">
       <h1>categories</h1>
-      {categories.map(category =>
-        <div key={category.idCategory}>
-          <a onClick={() => getCategory(category.strCategory)}>
+      <ul>
+        {categories.map(category =>
+          <li key={category.idCategory}>
+            {/* <a onClick={() => getCategoryInfo(category)}>
             {category.strCategory}
-          </a>
-        </div>
-      )}
+            </a><br/> */}
+            <Link 
+              to={`category/${category.strCategory}`}
+              state={{categoryName: category.strCategory}}>
+                {category.strCategory}
+            </Link>
+          </li>
+        )}
+      </ul>
     </div>
   )
 }

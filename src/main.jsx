@@ -2,8 +2,8 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
 import Category from './components/Category'
+import Placeholder from './components/Placeholder'
 import './index.css'
-import axios from 'axios'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
  
@@ -14,6 +14,10 @@ const router = createBrowserRouter([
   },
   {
     path: "/category",
+    element: <Placeholder />
+  },
+  {
+    path: "/category/:categoryName",
     element: <Category />
   }
 ])
