@@ -1,5 +1,6 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
 
 const Recipe = () => {
   const [recipe, setRecipe] = useState([])
@@ -13,6 +14,7 @@ const Recipe = () => {
   // random : www.themealdb.com/api/json/v1/1/random.php
   // rogaliki: www.themealdb.com/api/json/v1/1/lookup.php?i=53024
 
+  // TODO: fix so that you don't need try/catch to render your page...
   try {
     const ing_iterator = Object.keys(recipe.meals[0])
       .filter(word => word.includes("strIngredient"))
@@ -30,10 +32,12 @@ const Recipe = () => {
     for (let i = 0; i < ingredients.length; i++) {
       ingredientArray.push([i, ingredients[i], measures[i]])
     } 
- 
+    const ingredientsObject = {ingredients: ingredients, measures: measures}
+
     return (
       <div>
-        <img width={300} src={recipe.meals[0].strMealThumb}></img>
+        <img width={300} src={recipe.meals[0].strMealThumb}></img><br/>
+        <Link to={`/`}>Home</Link>
         <h1>{recipe.meals[0].strMeal}</h1>
         <p>{recipe.meals[0].strInstructions}</p>
         <h2>Ingredients</h2>
