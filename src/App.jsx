@@ -47,6 +47,7 @@ const App = () => {
           </li>
         )}
       </ul>
+      <Link to={`random-recipe`}>Random recipe</Link>
     </div>
   )
 }
