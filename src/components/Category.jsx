@@ -25,7 +25,7 @@ const Category = () => {
           {categoryData.meals && categoryData.meals.map(meal =>
             <li key={meal.idMeal}>
               <Link 
-                to={`/meal/${meal.idMeal}`}
+                to={`meal/${meal.idMeal}`}
                 state={{mealId: meal.idMeal}}>
                 {meal.strMeal}
               </Link>

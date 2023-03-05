@@ -2,7 +2,7 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import { Link, useLocation } from "react-router-dom"
 
-const Recipe = () => {
+const RecipeFromCategory = () => {
   const location = useLocation()
   const mealId = location.state?.mealId
   const [recipe, setRecipe] = useState([])
@@ -60,4 +60,4 @@ const Recipe = () => {
   }
 }
 
-export default Recipe
+export default RecipeFromCategory

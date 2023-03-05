@@ -4,11 +4,11 @@ import App from './App'
 import Category from './components/Category'
 import Placeholder from './components/Placeholder'
 import RandomRecipe from './components/RandomRecipe'
-import Recipe from './components/Recipe'
 
 import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-
+import RecipeFromCategory from './components/RecipeFromCategory'
+import RecipeFromUrl from './components/RecipeFromUrl'
  
 const router = createBrowserRouter([
   {
@@ -24,8 +24,12 @@ const router = createBrowserRouter([
     element: <Category />
   },
   {
+    path: "/category/:categoryName/meal/:mealId",
+    element: <RecipeFromCategory />
+  },
+  {
     path: "/meal/:mealId",
-    element: <Recipe />
+    element: <RecipeFromUrl />
   },
   {
     path: "/random-recipe",
