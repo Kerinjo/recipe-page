@@ -3,7 +3,9 @@ import ReactDOM from 'react-dom/client'
 import App from './App'
 import Category from './components/Category'
 import Placeholder from './components/Placeholder'
-import Recipe from './components/RandomRecipe'
+import RandomRecipe from './components/RandomRecipe'
+import Recipe from './components/Recipe'
+
 import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
@@ -22,8 +24,12 @@ const router = createBrowserRouter([
     element: <Category />
   },
   {
-    path: "/random-recipe",
+    path: "/meal/:mealId",
     element: <Recipe />
+  },
+  {
+    path: "/random-recipe",
+    element: <RandomRecipe />
   }
 ])
 

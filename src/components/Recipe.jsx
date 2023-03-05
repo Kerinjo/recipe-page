@@ -1,12 +1,14 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 
-const RandomRecipe = () => {
+const Recipe = () => {
+  const location = useLocation()
+  const mealId = location.state?.mealId
   const [recipe, setRecipe] = useState([])
   useEffect(() => {
     axios
-    .get('https://www.themealdb.com/api/json/v1/1/random.php')
+    .get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`)
       .then(response => {
         setRecipe(response.data)
       })
@@ -58,4 +60,4 @@ const RandomRecipe = () => {
   }
 }
 
-export default RandomRecipe
+export default Recipe
