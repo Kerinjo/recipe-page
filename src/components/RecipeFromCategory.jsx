@@ -22,13 +22,13 @@ const RecipeFromCategory = () => {
       .filter(word => word.includes("strIngredient"))
     const ingredients = ing_iterator
       .map((element) => recipe.meals[0][element])
-      .filter((element)=> element !== "")
+      .filter((element)=> element !== "" && element !== null)
 
     const meas_iterator = Object.keys(recipe.meals[0])
       .filter(word => word.includes("strMeasure"))
     const measures = meas_iterator
       .map((element) => recipe.meals[0][element])
-      .filter((element) => element !== "")
+      .filter((element) => element !== ""  && element !== null)
 
     const ingredientArray = []
     for (let i = 0; i < ingredients.length; i++) {
@@ -42,10 +42,12 @@ const RecipeFromCategory = () => {
         <h1>{recipe.meals[0].strMeal}</h1>
         <p>{recipe.meals[0].strInstructions}</p>
         <h2>Ingredients</h2>
-        <ul>         
-           {ingredientArray.map(ingredient =>
-             <li key={ingredient[0]}>{ingredient[1]} {ingredient[2]}</li>)}
-        </ul>
+        <div className="ingredients">
+          <ul>         
+            {ingredientArray.map(ingredient =>
+              <li key={ingredient[0]}>{ingredient[1]} {ingredient[2]}</li>)}
+          </ul>
+        </div>
       </div>
     )
   }
